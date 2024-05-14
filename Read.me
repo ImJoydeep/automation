@@ -1,0 +1,24 @@
+# Local Deploy
+pip3 install functions-framework
+functions-framework --target=hello_gcs --debug
+functions-framework --target=update_bigquery --debug
+
+export GOOGLE_APPLICATION_CREDENTIALS="/home/roldan/odoo/utils/cfETL_New/serviceAccount.json"
+
+
+
+export GOOGLE_APPLICATION_CREDENTIALS="/home/roldan/service_account.json"
+export DATASET="reporter_etl"
+export VERSION="v14"
+export BUCKET="reporter-etl"
+export DBXTOKEN="ansFgjY0fVAAAAAAAAAA9HPoWn3a8g5mF4-w3OC8YQTw-xBpQYMgR8Da1pmYPjwW"
+export USEDROPBOX="yes"
+export GOOGLE_APPLICATION_CREDENTIALS="/home/nav202/Documents/esp-retrieval/serviceAccount.json"
+# Remote deploy
+gcloud functions deploy cfETL_New --runtime=python39 --trigger-http --allow-unauthenticated --entry-point=hello_gcs --timeout=540s
+
+curl -X GET "https://us-central1-alx-cloud.cloudfunctions.net/cfETL_New?client_id=vant_panels&esp=Klaviyo&process=masterlist_update"
+
+curl -X POST https://us-central1-alx-cloud.cloudfunctions.net/cfETL_New -H "Content-Type:application/json"  -d '{"client_id":"leading_lady","esp":"Klaviyo"}
+
+https://github-alchemyworx-nyc-etl-mtk3jizcuq-uc.a.run.app  etl tool
